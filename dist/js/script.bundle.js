@@ -134,8 +134,16 @@ function () {
       fetch(url).then(function (response) {
         return response.json();
       }).then(function (data) {
-        var userCityTemp = document.querySelector('.city-temp');
-        userCityTemp.innerHTML = "Temperature: ".concat(Math.round(parseInt(data.main.temp) - kelvinDegree), " C\xB0");
+        var nameOfCity = document.querySelector('.name-of-city');
+        var cityTemp = document.querySelector('.city-temp');
+        var typeOfWeather = document.querySelector('.type-of-weather');
+        var windSpeed = document.querySelector('.wind-speed');
+        var clouds = document.querySelector('.clouds');
+        nameOfCity.innerHTML = "".concat(data.name);
+        cityTemp.innerHTML = "Temperature: ".concat(Math.round(parseInt(data.main.temp) - kelvinDegree), " C\xB0");
+        typeOfWeather.innerHTML = "Weather: ".concat(data.weather[0].main);
+        windSpeed.innerHTML = "Wind speed: ".concat(parseInt(data.wind.speed), " meter/sec");
+        clouds.innerHTML = "Clouds: ".concat(parseInt(data.clouds.all), "%");
       });
     }
   }]);
@@ -176,10 +184,22 @@ function () {
       var app = document.querySelector('.app');
       var infoBlock = document.createElement('div');
       infoBlock.setAttribute('class', 'info-block');
+      var nameOfCity = document.createElement('h1');
+      nameOfCity.setAttribute('class', 'name-of-city');
       var cityTemp = document.createElement('p');
       cityTemp.setAttribute('class', 'city-temp');
+      var typeOfWeather = document.createElement('p');
+      typeOfWeather.setAttribute('class', 'type-of-weather');
+      var windSpeed = document.createElement('p');
+      windSpeed.setAttribute('class', 'wind-speed');
+      var clouds = document.createElement('p');
+      clouds.setAttribute('class', 'clouds');
       app.appendChild(infoBlock);
+      infoBlock.appendChild(nameOfCity);
       infoBlock.appendChild(cityTemp);
+      infoBlock.appendChild(typeOfWeather);
+      infoBlock.appendChild(windSpeed);
+      infoBlock.appendChild(clouds);
     }
   }, {
     key: "clearUserCityInfoField",
