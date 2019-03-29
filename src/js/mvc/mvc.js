@@ -11,7 +11,7 @@ class Model {
       })
       .then(function(data) {
         let userCityTemp = document.querySelector('.city-temp');
-        userCityTemp.innerHTML = `Temperature: ${parseInt(data.main.temp) - kelvinDegree} C°`;
+        userCityTemp.innerHTML = `Temperature: ${Math.round(parseInt(data.main.temp) - kelvinDegree)} C°`;
       });
   }
 }

@@ -135,7 +135,7 @@ function () {
         return response.json();
       }).then(function (data) {
         var userCityTemp = document.querySelector('.city-temp');
-        userCityTemp.innerHTML = "Temperature: ".concat(parseInt(data.main.temp) - kelvinDegree, " C\xB0");
+        userCityTemp.innerHTML = "Temperature: ".concat(Math.round(parseInt(data.main.temp) - kelvinDegree), " C\xB0");
       });
     }
   }]);
