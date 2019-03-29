@@ -172,6 +172,7 @@ function () {
   }, {
     key: "createUserCityInfoField",
     value: function createUserCityInfoField() {
+      this.clearUserCityInfoField();
       var app = document.querySelector('.app');
       var infoBlock = document.createElement('div');
       infoBlock.setAttribute('class', 'info-block');
@@ -179,6 +180,16 @@ function () {
       cityTemp.setAttribute('class', 'city-temp');
       app.appendChild(infoBlock);
       infoBlock.appendChild(cityTemp);
+    }
+  }, {
+    key: "clearUserCityInfoField",
+    value: function clearUserCityInfoField() {
+      var app = document.querySelector('.app');
+      var infoBlock = document.querySelector('.info-block');
+
+      if (infoBlock) {
+        app.removeChild(infoBlock);
+      }
     }
   }]);
 

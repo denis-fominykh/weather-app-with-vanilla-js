@@ -6,12 +6,14 @@ class Model {
     const kelvinDegree = 273.15;
 
     fetch(url)
-      .then(function(response) {
+      .then(response => {
         return response.json();
       })
-      .then(function(data) {
+      .then(data => {
         let userCityTemp = document.querySelector('.city-temp');
-        userCityTemp.innerHTML = `Temperature: ${Math.round(parseInt(data.main.temp) - kelvinDegree)} C°`;
+        userCityTemp.innerHTML = `Temperature: ${Math.round(
+          parseInt(data.main.temp) - kelvinDegree,
+        )} C°`;
       });
   }
 }
@@ -41,6 +43,8 @@ class View {
   }
 
   static createUserCityInfoField() {
+    this.clearUserCityInfoField();
+
     let app = document.querySelector('.app');
 
     let infoBlock = document.createElement('div');
@@ -51,6 +55,15 @@ class View {
 
     app.appendChild(infoBlock);
     infoBlock.appendChild(cityTemp);
+  }
+
+  static clearUserCityInfoField() {
+    let app = document.querySelector('.app');
+    let infoBlock = document.querySelector('.info-block');
+
+    if (infoBlock) {
+	    app.removeChild(infoBlock);
+    }
   }
 }
 
