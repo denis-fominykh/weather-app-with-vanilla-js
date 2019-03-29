@@ -1,0 +1,28 @@
+.app {
+	width: 50%;
+	margin: 50px auto;
+
+	.search-block {
+		position: relative;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: stretch;
+		width: 100%;
+
+		.user-city {
+			border-top-right-radius: 0px;
+			border-bottom-right-radius: 0px;
+			position: relative;
+			flex: 1 1 auto;
+			width: 1%;
+			margin-bottom: 0;
+			padding: 0.375rem 0.75rem;
+		}
+
+		.submit-button {
+			margin-left: -1px;
+			border-top-left-radius: 0px;
+			border-bottom-left-radius: 0px;
+		}
+	}
+}

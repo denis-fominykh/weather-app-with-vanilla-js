@@ -24,17 +24,20 @@ class View {
     searchBlock.setAttribute('class', 'search-block');
 
     let userCityInput = document.createElement('input');
-    userCityInput.setAttribute('class', 'user-city');
+    userCityInput.setAttribute('class', 'user-city form-control');
     userCityInput.setAttribute('type', 'search');
     userCityInput.setAttribute('placeholder', 'Type your city');
 
     let submitButton = document.createElement('button');
-    submitButton.setAttribute('class', 'submit-button');
-    submitButton.innerHTML = 'Search';
+    submitButton.setAttribute('class', 'submit-button btn btn-secondary');
+
+    let searchIcon = document.createElement('i');
+    searchIcon.setAttribute('class', 'fa fa-search');
 
     app.appendChild(searchBlock);
     searchBlock.appendChild(userCityInput);
     searchBlock.appendChild(submitButton);
+    submitButton.appendChild(searchIcon);
   }
 
   static createUserCityInfoField() {
