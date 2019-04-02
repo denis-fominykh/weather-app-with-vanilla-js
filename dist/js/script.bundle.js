@@ -145,6 +145,7 @@ function () {
         windSpeed.innerHTML = "Wind speed: ".concat(parseInt(data.wind.speed), " meter/sec");
         clouds.innerHTML = "Clouds: ".concat(parseInt(data.clouds.all), "%");
       });
+      Controller.deleteData();
     }
   }]);
 
@@ -182,6 +183,10 @@ function () {
     value: function createUserCityInfoField() {
       this.clearUserCityInfoField();
       var app = document.querySelector('.app');
+      var deleteButton = document.createElement('button');
+      deleteButton.setAttribute('class', 'delete-button btn btn-sm float-right btn-outline-danger');
+      var deleteIcon = document.createElement('i');
+      deleteIcon.setAttribute('class', 'delete-icon fa fa-trash-o');
       var infoBlock = document.createElement('div');
       infoBlock.setAttribute('class', 'info-block');
       var nameOfCity = document.createElement('h1');
@@ -195,6 +200,8 @@ function () {
       var clouds = document.createElement('p');
       clouds.setAttribute('class', 'clouds');
       app.appendChild(infoBlock);
+      infoBlock.appendChild(deleteButton);
+      deleteButton.appendChild(deleteIcon);
       infoBlock.appendChild(nameOfCity);
       infoBlock.appendChild(cityTemp);
       infoBlock.appendChild(typeOfWeather);
@@ -227,8 +234,14 @@ function () {
     key: "viewData",
     value: function viewData() {
       View.createSearchCityField();
-      var button = document.querySelector('.submit-button');
-      button.addEventListener('click', Model.getData);
+      var searchButton = document.querySelector('.submit-button');
+      searchButton.addEventListener('click', Model.getData);
+    }
+  }, {
+    key: "deleteData",
+    value: function deleteData() {
+      var deleteButton = document.querySelector('.delete-button');
+      deleteButton.addEventListener('click', View.clearUserCityInfoField);
     }
   }]);
 

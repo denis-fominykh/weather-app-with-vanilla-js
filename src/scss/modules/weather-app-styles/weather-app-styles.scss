@@ -16,13 +16,25 @@
 			flex: 1 1 auto;
 			width: 1%;
 			margin-bottom: 0;
-			padding: 0.375rem 0.75rem;
+			padding: .375rem .75rem;
 		}
 
 		.submit-button {
 			margin-left: -1px;
 			border-top-left-radius: 0px;
 			border-bottom-left-radius: 0px;
+		}
+	}
+
+	.info-block {
+		border: 1px solid #ced4da;
+		border-radius: .25rem;
+		margin-top: .40rem;
+		padding: .375rem .75rem;
+
+		.delete-button {
+			padding: .25rem .57rem;
+			border-radius: 1rem;
 		}
 	}
 }

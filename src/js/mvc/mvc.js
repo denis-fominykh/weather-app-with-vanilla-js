@@ -18,12 +18,14 @@ class Model {
 
         nameOfCity.innerHTML = `${data.name}`;
         cityTemp.innerHTML = `Temperature: ${Math.round(
-          parseInt(data.main.temp) - kelvinDegree
+          parseInt(data.main.temp) - kelvinDegree,
         )} C°`;
         typeOfWeather.innerHTML = `Weather: ${data.weather[0].main}`;
         windSpeed.innerHTML = `Wind speed: ${parseInt(data.wind.speed)} meter/sec`;
         clouds.innerHTML = `Clouds: ${parseInt(data.clouds.all)}%`;
       });
+
+    Controller.deleteData();
   }
 }
 
@@ -56,6 +58,12 @@ class View {
 
     let app = document.querySelector('.app');
 
+    let deleteButton = document.createElement('button');
+    deleteButton.setAttribute('class', 'delete-button btn btn-sm float-right btn-outline-danger');
+
+    let deleteIcon = document.createElement('i');
+    deleteIcon.setAttribute('class', 'delete-icon fa fa-trash-o');
+
     let infoBlock = document.createElement('div');
     infoBlock.setAttribute('class', 'info-block');
 
@@ -75,6 +83,8 @@ class View {
     clouds.setAttribute('class', 'clouds');
 
     app.appendChild(infoBlock);
+    infoBlock.appendChild(deleteButton);
+    deleteButton.appendChild(deleteIcon);
     infoBlock.appendChild(nameOfCity);
     infoBlock.appendChild(cityTemp);
     infoBlock.appendChild(typeOfWeather);
@@ -95,8 +105,13 @@ class View {
 class Controller {
   static viewData() {
     View.createSearchCityField();
-    let button = document.querySelector('.submit-button');
-    button.addEventListener('click', Model.getData);
+    let searchButton = document.querySelector('.submit-button');
+    searchButton.addEventListener('click', Model.getData);
+  }
+
+  static deleteData() {
+	  let deleteButton = document.querySelector('.delete-button');
+	  deleteButton.addEventListener('click', View.clearUserCityInfoField);
   }
 }
 
